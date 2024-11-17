@@ -1,62 +1,30 @@
-import { useState } from 'react';
-
-const messages = [
-  'Learn React ⚛️',
-  'Apply for jobs 💼',
-  'Invest your new income 🤑',
-];
-
 export default function App() {
   return (
     <div>
-      <Steps />
-      <Steps />
+      <Logo />
+      <Form />
+      <PackingList />
+      <Stats />
     </div>
   );
 }
 
-function Steps() {
-  const buttonStyle = { backgroundColor: '#7959f2', color: '#fff' };
-  const [step, setStep] = useState(1);
-  const [isOpen, setIsOpen] = useState(true);
+function Logo() {
+  return <h1>🌴 Far Away 👜</h1>;
+}
 
-  function handlePrevious() {
-    if (step > 1) setStep((s) => s - 1);
-    else return;
-  }
+function Form() {
+  return <div className="add-form">What do you need for your trip? 😘</div>;
+}
 
-  function handleNext() {
-    if (step < 3) setStep((s) => s + 1);
-    else return;
-  }
+function PackingList() {
+  return <div className="list">LIST</div>;
+}
 
+function Stats() {
   return (
-    <div>
-      <button className="close" onClick={() => setIsOpen((open) => !open)}>
-        &times;
-      </button>
-      {isOpen && (
-        <div className="steps">
-          <div className="numbers">
-            <div className={step >= 1 ? 'active' : ''}>1</div>
-            <div className={step >= 2 ? 'active' : ''}>2</div>
-            <div className={step >= 3 ? 'active' : ''}>3</div>
-          </div>
-
-          <div className="message">
-            Step {step}: {messages[step - 1]}
-          </div>
-
-          <div className="buttons">
-            <button style={buttonStyle} onClick={handlePrevious}>
-              Previous
-            </button>
-            <button style={buttonStyle} onClick={handleNext}>
-              Next
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
+    <footer className="stats">
+      <em>👜 You have X items on your lists, and you already packed X (X%)</em>
+    </footer>
   );
 }
