@@ -6,3 +6,4 @@
 007 The Mechanics of State
 008 Adding Another Piece of State
 009 React Developer Tools
+010 Updating State Based on Current State
