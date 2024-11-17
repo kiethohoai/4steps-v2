@@ -8,3 +8,4 @@
 009 React Developer Tools
 010 Updating State Based on Current State
 011 More Thoughts About State + State Guidelines
+012 A Vanilla JavaScript Implementation
