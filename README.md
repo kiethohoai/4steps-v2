@@ -20,3 +20,4 @@
 003 Fundamentals of State Management
 004 Thinking About State and Lifting State Up
 005 Reviewing Lifting Up State
+006 Deleting an Item More Child-to-Parent Communication!
