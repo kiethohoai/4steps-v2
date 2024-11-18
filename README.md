@@ -26,3 +26,4 @@
 009 Calculating Statistics as Derived State
 010 Sorting Items
 011 Clearing the List
+012 Moving Components Into Separate Files
