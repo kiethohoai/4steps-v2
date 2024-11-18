@@ -30,3 +30,4 @@
 013 EXERCISE #1 Accordion Component (v1)
 014 The children Prop Making a Reusable Button
 015 More Reusability With the children Prop
+016 EXERCISE #2 Accordion Component (v2)
