@@ -2,38 +2,87 @@ import { useState } from 'react';
 
 const initialFriends = [
   {
-    id: 118836,
+    id: 777777,
+    name: 'Thuy',
+    image: 'https://i.pravatar.cc/48?u=12312237213242',
+    balance: -7,
+  },
+  {
+    id: 888888,
+    name: 'Ly',
+    image: 'https://i.pravatar.cc/48/?u=2347612323424',
+    balance: 8,
+  },
+  {
+    id: 999999,
+    name: 'Tam',
+    image: 'https://i.pravatar.cc/48/?u=2340232384234',
+    balance: 9,
+  },
+];
+
+const randomFriends = [
+  {
+    id: 111111,
     name: 'Clark',
     image: 'https://i.pravatar.cc/48?u=118836',
     balance: -7,
   },
   {
-    id: 933372,
+    id: 222222,
     name: 'Sarah',
     image: 'https://i.pravatar.cc/48?u=933372',
     balance: 20,
   },
   {
-    id: 499476,
+    id: 333333,
     name: 'Anthony',
     image: 'https://i.pravatar.cc/48?u=499476',
     balance: 0,
   },
+  {
+    id: 444444,
+    name: 'Ngan',
+    image: 'https://i.pravatar.cc/48?u=1231237213',
+    balance: -7,
+  },
+  {
+    id: 555555,
+    name: 'Diep',
+    image: 'https://i.pravatar.cc/48/?u=23476123',
+    balance: 20,
+  },
+  {
+    id: 666666,
+    name: 'Mini',
+    image: 'https://i.pravatar.cc/48/?u=2340034',
+    balance: 0,
+  },
 ];
+
+function getRandomId(min = 100000, max = 999999) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
 
 export default function App() {
   const [showAddFriend, setShowAddFriend] = useState(false);
+  const [friends, setFriends] = useState(initialFriends);
 
-  function handleShowAddFriend() {
+  function handleShowHideAddFriend() {
     setShowAddFriend((show) => !show);
+  }
+
+  function handleAddFriend(newFriend) {
+    setFriends((friends) => [...friends, newFriend]);
+    setShowAddFriend(false);
   }
 
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendsList />
-        {showAddFriend && <FormAddFriend />}
-        <Button onClick={handleShowAddFriend}>
+        <FriendsList friends={friends} />
+        {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
+        <Button onClick={handleShowHideAddFriend}>
           {showAddFriend ? 'Close' : 'Add friend'}
         </Button>
       </div>
@@ -43,9 +92,7 @@ export default function App() {
   );
 }
 
-function FriendsList() {
-  const friends = initialFriends;
-
+function FriendsList({ friends }) {
   return (
     <ul>
       {friends.map((friend) => (
@@ -88,14 +135,53 @@ function Button({ onClick, children }) {
   );
 }
 
-function FormAddFriend() {
+function FormAddFriend({ onAddFriend }) {
+  const id = getRandomId();
+  const index = Math.floor(Math.random() * 5) + 1;
+
+  const nameInit = randomFriends[index].name;
+  const imageInit = randomFriends[index].image;
+
+  const [name, setName] = useState(nameInit);
+  const [image, setImage] = useState(imageInit);
+
+  function handleOnSubmit(e) {
+    /* guard */
+    e.preventDefault();
+    if (!name || !image) return;
+
+    /* data */
+    const newFriend = {
+      id: id,
+      name: name,
+      image: image,
+      balance: 0,
+    };
+    console.log(`🚀CHECK > newFriend:`, newFriend);
+
+    /* add friend */
+    onAddFriend(newFriend);
+
+    /* set all state to defaul value */
+    setName('');
+    setImage('');
+  }
+
   return (
-    <form className="form-add-friend">
+    <form className="form-add-friend" onSubmit={handleOnSubmit}>
       <label>🤵 Friend</label>
-      <input type="text" />
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
 
       <label>📷 URL</label>
-      <input type="text" />
+      <input
+        type="text"
+        value={image}
+        onChange={(e) => setImage(e.target.value)}
+      />
 
       <Button>Add</Button>
     </form>
