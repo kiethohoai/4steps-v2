@@ -31,3 +31,8 @@
 014 The children Prop Making a Reusable Button
 015 More Reusability With the children Prop
 016 EXERCISE #2 Accordion Component (v2)
+08-practice-project-eat-n-split
+001 Section Overview
+002 Project Setup
+003 Building the Static App List of Friends
+004 Building the Static App Forms
