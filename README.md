@@ -38,3 +38,4 @@
 004 Building the Static App Forms
 005 Displaying the New Friend Form
 006 Adding a New Friend
+007 Selecting a Friend
