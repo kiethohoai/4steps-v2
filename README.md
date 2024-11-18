@@ -25,3 +25,4 @@
 008 Derived State
 009 Calculating Statistics as Derived State
 010 Sorting Items
+011 Clearing the List
